@@ -1,122 +1,163 @@
 {% load static %}
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Clean &mdash; A free HTML5 Template by FREEHTML5.CO</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Free HTML5 Template by FREEHTML5.CO"/>
-    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive"/>
-    <meta name="author" content="FREEHTML5.CO"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
-    <meta name="twitter:title" content=""/>
-    <meta name="twitter:image" content=""/>
-    <meta name="twitter:url" content=""/>
-    <meta name="twitter:card" content=""/>
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico">
-
-    <!-- Google Webfonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,500' rel='stylesheet' type='text/css'>
-
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
-    <!-- Simple Line Icons -->
-    <link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
-    <!-- Theme Style -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- Modernizr JS -->
-    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
-    <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
-	<script src="{% static 'js/respond.min.js' %}"></script>
-	<![endif]-->
-
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+    </style>
 </head>
-<body>
-<header id="fh5co-header" role="banner">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="navbar-header">
-                        <!-- Mobile Toggle Menu Button -->
-                        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle visible-xs-block"
-                           data-toggle="collapse" data-target="#fh5co-navbar"
-                           aria-expanded="false" aria-controls="navbar"><i></i></a>
-                        <a class="navbar-brand" href="{% url 'home' %}">Clean</a>
-                    </div>
-                    <div id="fh5co-navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="{% url 'home' %}"><span>Home <span
-                                    class="border"></span></span></a></li>
-                            <li><a href="right-sidebar.html"><span>Right Sidebar <span class="border"></span></span></a>
-                            </li>
-                            <li class="nav-item">
-                                {% if request.user.is_authenticated %}
-                                    <div class="d-flex">
-                                        {% if request.user.first_name %}
-                                            <a class="nav-link"
-                                               >{{ request.user.first_name }} {{ request.user.last_name }}</a>
-                                        {% else %}
-                                            <a class="nav-link" href="{% url 'login' %}">{{ request.user.username }}</a>
-                                        {% endif %}
-                                        <a href="{% url 'logout' %}"><span class="badge badge-danger">logout</span></a>
-                                    </div>
-                                {% else %}
-                                    <div class="d-flex">
-                                        <a class="nav-link" href="{% url 'login' %}">login</a><span
-                                            class="mt-2">/</span>
-                                        <a class="nav-link" href="{% url 'register' %}">Register</a>
-                                    </div>
-                                {% endif %}
-                            </li>
-                        </ul>
-                    </div>
+<body class="bg-darker text-gray-200 min-h-screen flex flex-col">
+<!-- Navbar -->
+<nav class="bg-dark border-b border-gray-800 fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <a href="{% url 'home' %}" class="flex-shrink-0 flex items-center">
+                    <i data-feather="pen-tool" class="h-8 w-8 text-indigo-400"></i>
+                    <span class="ml-2 text-xl font-bold gradient-text">DarkBlog</span>
+                </a>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="{% url 'home' %}"
+                       class="px-3 py-2 rounded-md text-sm font-medium {% if request.path == '/' %} bg-indigo-900/50 text-white {% else %} hover:bg-gray-800/50 hover:text-white{% endif %}">Blog</a>
+                    <a href="{% url 'create_post' %}"
+                       class="px-3 py-2 rounded-md text-sm font-medium {% if request.path == '/addpost/' %} bg-indigo-900/50 text-white {% else %} hover:bg-gray-800/50 hover:text-white{% endif %}">Add Post</a>
+                    <a href="{% url 'about' %}"
+                       class="px-3 py-2 rounded-md text-sm font-medium {% if request.path == '/about/' %}bg-indigo-900/50 text-white{% else %}hover:bg-gray-800/50 hover:text-white{% endif %}">About</a>
+                    <a href="{% url 'contact' %}"
+                       class="px-3 py-2 rounded-md text-sm font-medium {% if request.path == '/contact/' %}bg-indigo-900/50 text-white{% else %}hover:bg-gray-800/50 hover:text-white{% endif %}">Contact</a>
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'edit_user' %}"
+                                class="px-3 py-2 rounded-md text-sm font-medium bg-indigo-600 text-white">
+                            {{ request.user.username }}
+                        </a>
+                        <a href="{% url 'logout' %}"
+                           class="px-3 py-2 rounded-md text-sm font-medium bg-red-600 hover:bg-red-700 text-white">
+                            Logout
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login' %}"
+                           class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800/50 hover:text-white"
+                           >Login</a>
+                        <a href="{% url 'register' %}"
+                           class="px-3 py-2 rounded-md text-sm font-medium bg-indigo-600 hover:bg-indigo-700 text-white"
+                           >Register</a>
+                    {% endif %}
                 </div>
             </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
         </div>
-    </nav>
-</header>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gray-800">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {% if request.user.is_authenticated %}
+                <span class="block px-3 py-2 rounded-md text-base font-medium bg-indigo-600 text-white">Hi, {{ request.user.first_name }}</span>
+                <a href="{% url 'logout' %}"
+                   class="block px-3 py-2 rounded-md text-base font-medium bg-red-600 hover:bg-red-700 text-white">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}"
+                   class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800/50 hover:text-white"
+                   >Login</a>
+                <a href="{% url 'register' %}"
+                   class="block px-3 py-2 rounded-md text-base font-medium bg-indigo-600 hover:bg-indigo-700 text-white"
+                   >Register</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
 
-{% block content %}
+<main class="flex-grow">
+    {% block content %}
 
-{% endblock %}
+    {% endblock %}
+</main>
 
-
-
-
-<!-- jQuery -->
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<!-- jQuery Easing -->
-<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
-<!-- Bootstrap -->
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<!-- Waypoints -->
-<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-<!-- Main JS -->
-<script src="{% static 'js/main.js' %}"></script>
-
-
+<footer class="bg-dark border-t border-gray-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">DarkBlog</h3>
+                <p class="text-gray-400">A modern blog about technology, design, and development.</p>
+                <div class="flex mt-4 space-x-4">
+                    <a href="https://github.com/LEMOONAD" target="_blank" class="text-gray-400 hover:text-white">
+                        <i data-feather="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/amin-bagheri-447348229/" target="_blank"
+                       class="text-gray-400 hover:text-white">
+                        <i data-feather="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white">Blog</a></li>
+                    <li><a href="{% url 'about' %}" class="text-gray-400 hover:text-white">About</a></li>
+                    <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+            <p>&copy; 2025 DarkBlog. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    })
+    
+    // Initialize AOS and Feather Icons
+    document.addEventListener('DOMContentLoaded', function () {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        feather.replace();
+    });
+</script>
 </body>
 </html>

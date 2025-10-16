@@ -1,87 +1,84 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+
 {% block content %}
-    <!-- END .header -->
-
-
-    <div id="fh5co-portfolio">
-        <div class="fh5co-portfolio-item" style="display: flex; flex-direction: column;">
-            <div class="fh5co-portfolio-figure animate-box"
-                 style="background-image: url({% if post.image %}{{ post.image.url }}{% else %}{% static 'images/user.jpg' %}{% endif %}); height: 300px; background-size: cover; background-position: center; width: 100%; border-radius: 10px"></div>
-            <div class="fh5co-portfolio-description" style="padding: 40px; font-size: 18px; width: 100%; border-radius: 10px">
-                <h2 style="font-size: 40px;">{{ post.title }}</h2>
-                <p style="font-size: 20px; line-height: 1.6;">{{ post.content }}</p>
-            </div>
+    <!-- Main Content -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- Back Button -->
+        <div class="mb-6">
+            <a href="{% url 'home' %}" class="inline-flex items-center text-indigo-400 hover:text-indigo-300">
+                <i data-feather="arrow-left" class="w-5 h-5 mr-2"></i> Back to blog
+            </a>
         </div>
-    </div>
 
+        <!-- Article Header -->
+        <article class="mb-12">
+            <div class="mb-6 text-sm text-indigo-400">
+                {{ post.created }} • {{ post.read_time }} min read • {{ post.slug }}
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" data-aos="fade-up">{{ post.title }}</h1>
+            <div class="flex items-center mb-8">
+                <div>
+                    <p class="font-medium"> &#xe236 {{ post.author }}</p>
+                </div>
+            </div>
+            <img src="{% if post.image %}{{ post.image.url }}{% else %}/media/images/user.jpg{% endif %}"
+                 alt="Featured image"
+                 class="w-full h-[315px] object-cover rounded-xl mb-8 border border-gray-800">
 
+            <!-- Article Content -->
+            <div class="content-wrapper max-w-3xl mx-auto">
+                <p class="text-xl font-medium mb-6">{{ post.content|linebreaks }}</p>
 
-
-
-    <div id="fh5co-services">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="row">
-                        <h2 class="section-lead text-center">Features</h2>
-                        <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                            <div class="fh5co-icon to-animate"><i class="icon-present"></i></div>
-                            <div class="fh5co-desc">
-                                <h3>100% Free</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
+                <div class="mt-12 border-t border-gray-800 pt-8">
+                    <h3 class="text-xl font-bold mb-4">About the Author</h3>
+                    <div class="flex items-start">
+                        <div>
+                            <p class="font-bold">{{ post.author }}</p>
+                            <p class="text-gray-400 mb-2">{{ post.author.profile.bio }}</p>
+                            <div class="flex space-x-3">
+                                {% if post.author.profile.github %}
+                                    <a href="{{ post.author.profile.github }}" target="_blank"
+                                       class="text-indigo-400 hover:text-indigo-300"><i data-feather="github"></i></a>
+                                {% endif %}
+                                {% if post.author.profile.linkedin %}
+                                    <a href="{{ post.author.profile.linkedin }}" target="_blank"
+                                       class="text-indigo-400 hover:text-indigo-300">
+                                        <i data-feather="linkedin"></i>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                            <div class="fh5co-icon to-animate"><i class="icon-eye"></i></div>
-                            <div class="fh5co-desc">
-                                <h3>Retina Ready</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                            </div>
-                        </div>
-                        <div class="clearfix visible-sm-block visible-xs-block"></div>
-                        <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                            <div class="fh5co-icon to-animate"><i class="icon-crop"></i></div>
-                            <div class="fh5co-desc">
-                                <h3>Fully Responsive</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                            <div class="fh5co-icon to-animate"><i class="icon-speedometer"></i></div>
-                            <div class="fh5co-desc">
-                                <h3>Lightweight</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                            </div>
-                        </div>
-                        <div class="clearfix visible-sm-block visible-xs-block"></div>
-                        <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                            <div class="fh5co-icon to-animate"><i class="icon-heart"></i></div>
-                            <div class="fh5co-desc">
-                                <h3>Made with Love</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                            <div class="fh5co-icon to-animate"><i class="icon-umbrella"></i></div>
-                            <div class="fh5co-desc">
-                                <h3>Eco Friendly</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                            </div>
-                        </div>
-                        <div class="clearfix visible-sm-block visible-xs-block"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </article>
 
+        <!-- Related Articles -->
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold mb-6">Related Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {% for related in related_posts %}
+                    <div class="bg-dark rounded-xl overflow-hidden shadow-lg border border-gray-800 transition-all duration-300">
+                        <img src="
+
+
+                                {% if related.image %}{{ related.image.url }}{% else %}{% static 'media/images/user.jpg' %}{% endif %}"
+                             alt="Post thumbnail" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold mb-2">{{ related.title }}</h3>
+                            <p class="text-gray-400 text-sm mb-3">{{ related.created|date:'F d, Y' }}
+                                • {{ related.read_time }}</p>
+                            <a href="{% url 'post_detail' related.pk %}"
+                               class="text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center text-sm">
+                                Read more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
 {% endblock %}

@@ -1,183 +1,84 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
-
-    <!-- END .header -->
-
-
-    <div id="fh5co-main">
-        <div class="fh5co-intro text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="intro-lead">Make something you love</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="fh5co-portfolio">
-            {% for post in posts %}
-                <div class="fh5co-portfolio-item {% if forloop.counter|divisibleby:2 %}fh5co-img-right{% endif %}">
-                    <div class="fh5co-portfolio-figure animate-box"
-                         style="background-image: url(
-                                 {% if post.image %}
-                                     {{ post.image.url }}
-                                 {% else %}
-                                     {% static 'images/user.jpg' %}
-                                 {% endif %}
-                                 ); border-radius: 10px">
-                    </div>
-                    <div class="fh5co-portfolio-description" style="border-radius: 10px">
-                        <h2>{{ post.title }}</h2>
-                        <p>{{ post.content|truncatechars:50 }}</p>
-                        <p><a href="{% url 'post_detail' post.pk %}" class="btn btn-primary">Read the casetudy</a></p>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-        <div id="fh5co-team">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="row">
-                            <h2 class="section-lead text-center">Leadership</h2>
-                            <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-staff to-animate">
-                                <figure>
-                                    <img src="{% static 'images/user.jpg' %}" alt="Free HTML5 Template by FREEHTML5.co"
-                                         class="img-responsive">
-                                </figure>
-                                <h3>Will Barrow</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                                <ul class="fh5co-social">
-                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icon-github"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-staff to-animate">
-                                <figure>
-                                    <img src="{% static 'images/user_2.jpg' %}"
-                                         alt="Free HTML5 Template by FREEHTML5.co" class="img-responsive">
-                                </figure>
-                                <h3>Max Conversion</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                                <ul class="fh5co-social">
-                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icon-github"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="clearfix visible-sm-block visible-xs-block"></div>
-                            <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-staff to-animate">
-                                <figure>
-                                    <img src="{% static 'images/user_3.jpg' %}"
-                                         alt="Free HTML5 Template by FREEHTML5.co" class="img-responsive">
-                                </figure>
-                                <h3>Hanson Deck</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                                <ul class="fh5co-social">
-                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icon-github"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-staff to-animate">
-                                <figure>
-                                    <img src="{% static 'images/user.jpg' %}" alt="Free HTML5 Template by FREEHTML5.co"
-                                         class="img-responsive">
-                                </figure>
-                                <h3>Sue Shei</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. </p>
-                                <ul class="fh5co-social">
-                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icon-github"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="fh5co-services">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="row">
-                            <h2 class="section-lead text-center">Features</h2>
-                            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                                <div class="fh5co-icon to-animate"><i class="icon-present"></i></div>
-                                <div class="fh5co-desc">
-                                    <h3>100% Free</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts. </p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                                <div class="fh5co-icon to-animate"><i class="icon-eye"></i></div>
-                                <div class="fh5co-desc">
-                                    <h3>Retina Ready</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts. </p>
-                                </div>
-                            </div>
-                            <div class="clearfix visible-sm-block visible-xs-block"></div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                                <div class="fh5co-icon to-animate"><i class="icon-crop"></i></div>
-                                <div class="fh5co-desc">
-                                    <h3>Fully Responsive</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts. </p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                                <div class="fh5co-icon to-animate"><i class="icon-speedometer"></i></div>
-                                <div class="fh5co-desc">
-                                    <h3>Lightweight</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts. </p>
-                                </div>
-                            </div>
-                            <div class="clearfix visible-sm-block visible-xs-block"></div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                                <div class="fh5co-icon to-animate"><i class="icon-heart"></i></div>
-                                <div class="fh5co-desc">
-                                    <h3>Made with Love</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts. </p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                                <div class="fh5co-icon to-animate"><i class="icon-umbrella"></i></div>
-                                <div class="fh5co-desc">
-                                    <h3>Eco Friendly</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts. </p>
-                                </div>
-                            </div>
-                            <div class="clearfix visible-sm-block visible-xs-block"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <!-- Main Content -->
+<main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center mb-12" data-aos="fade-up">
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+            <span class="gradient-text">Latest Posts</span>
+        </h1>
+        <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+            Discover the latest articles about technology, design, and more.
+        </p>
     </div>
 
-    <footer id="fh5co-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 text-center">
-                    <p>&copy; Clean Free HTML5. All Rights Reserved. <br>Created by <a href="http://freehtml5.co/"
-                                                                                       target="_blank">FREEHTML5.co</a>
-                        Images: <a href="http://pexels.com/" target="_blank">Pexels</a></p>
+    <!-- Blog Posts Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <!-- Post 1 -->
+        {% for post in posts %}
+            <div class="bg-dark rounded-xl overflow-hidden shadow-lg border border-gray-800 post-card transition-all duration-300"
+                 data-aos="fade-up" data-aos-delay="100">
+                <img src="{% if post.image %}
+                                {{ post.image.url }}
+                              {% else %}
+                                {% static 'media/images/user.jpg' %}
+                              {% endif %}"
+                     alt="Post thumbnail" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-400 mb-2">
+                        <span>{{ post.created }}</span>
+                        <span class="mx-2">•</span>
+                        <span>{{ post.read_time }} min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">{{ post.title }}</h3>
+                    <p class="text-gray-400 mb-4">{{ post.content|truncatechars:75 }}</p>
+                    <a href="{% url 'post_detail' post.pk %}" class="text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center">
+                        Read more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
                 </div>
             </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+        <div class="flex justify-center mt-8" data-aos="fade-up">
+            <nav class="inline-flex rounded-md shadow">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}"
+                       class="px-3 py-2 rounded-l-md border border-gray-700 bg-dark text-gray-300 hover:bg-gray-800">
+                        <i data-feather="chevron-left" class="w-5 h-5"></i>
+                    </a>
+                {% else %}
+                    <span class="px-3 py-2 rounded-l-md border border-gray-700 bg-dark text-gray-600 cursor-not-allowed">
+                            <i data-feather="chevron-left" class="w-5 h-5"></i>
+                        </span>
+                {% endif %}
+                {% for num in paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <span class="px-4 py-2 border-t border-b border-gray-700 bg-dark text-indigo-400 font-medium">{{ num }}</span>
+                    {% else %}
+                        <a href="?page={{ num }}"
+                           class="px-4 py-2 border-t border-b border-gray-700 bg-dark text-gray-300 hover:bg-gray-800">
+                            {{ num }}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}"
+                       class="px-3 py-2 rounded-r-md border border-gray-700 bg-dark text-gray-300 hover:bg-gray-800">
+                        <i data-feather="chevron-right" class="w-5 h-5"></i>
+                    </a>
+                {% else %}
+                    <span class="px-3 py-2 rounded-r-md border border-gray-700 bg-dark text-gray-600 cursor-not-allowed">
+                    <i data-feather="chevron-right" class="w-5 h-5"></i>
+                    </span>
+                {% endif %}
+            </nav>
         </div>
-    </footer>
+    {% endif %}
+</main>
+
 {% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Main Content -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                <span class="gradient-text">About Us</span>
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                Learn more about our mission and the values that drive us.
+            </p>
+        </div>
+
+        <!-- About Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div class="order-2 lg:order-1" data-aos="fade-right">
+                <h2 class="text-3xl font-bold mb-6">Our Story</h2>
+                <p class="text-gray-400 mb-4">
+                    DarkBlog began with a simple idea: to create a space where experiences, stories, and knowledge in
+                    the world of programming and technology could be shared freely.
+                </p>
+                <p class="text-gray-400 mb-4">
+                    We believe that everyone has something valuable to say — whether it’s a beginner writing their very
+                    first lines of code, or a professional with years of experience.
+                </p>
+                <p class="text-gray-400 mb-4">
+                    Here, we focus on:
+                </p>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li>Writing without boundaries.</li>
+                    <li>Learning from each other’s journeys.</li>
+                    <li>Building a community that grows together.</li>
+                </ul>
+                <p class="text-gray-400">
+                    DarkBlog was built not to be just another blog, but a place where knowledge and creativity come
+                    alive. Our story is only just beginning, and we’re glad you’re part of it. ✨
+                </p>
+            </div>
+            <div class="order-1 lg:order-2" data-aos="fade-left">
+                <img src="https://static.photos/office/640x360/1" alt="Our office"
+                     class="rounded-xl shadow-lg border border-gray-800 w-full h-auto">
+            </div>
+        </div>
+
+
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Meet Developer</h2>
+            <div class="flex justify-center">
+                <div class="bg-dark rounded-xl p-6 border border-gray-800 max-w-sm text-center" data-aos="fade-up"
+                     data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-2">M.A Bagheri</h3>
+                    <p class="text-indigo-400 mb-4">AI / Django Developer</p>
+                    <p class="text-gray-400 text-sm mb-4">Specialized in Django, Python, and AI-driven web solutions.</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="https://github.com/LEMOONAD" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400">
+                            <i data-feather="github"></i></a>
+                        <a href="https://www.linkedin.com/in/amin-bagheri-447348229/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400">
+                            <i data-feather="linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Values Section -->
+        <div class="bg-dark rounded-xl p-8 border border-gray-800 mb-16" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-8 text-center">Our Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-indigo-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="book-open" class="w-8 h-8 text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Knowledge Sharing</h3>
+                    <p class="text-gray-400">We believe in the power of education and freely sharing what we know to
+                        help others grow.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-indigo-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="users" class="w-8 h-8 text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Community</h3>
+                    <p class="text-gray-400">Building a supportive environment where everyone can learn and collaborate
+                        together.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-indigo-900/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="zap" class="w-8 h-8 text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Innovation</h3>
+                    <p class="text-gray-400">Staying at the forefront of technology and constantly exploring new ideas
+                        and approaches.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}

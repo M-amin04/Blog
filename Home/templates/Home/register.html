@@ -1,125 +1,97 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Login V4</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <!--===============================================================================================-->
-</head>
-<body>
 
-<div class="limiter">
-    <div class="container-login100" style="background-image: url({% static 'images/bg-01.jpg' %});">
-        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post">
+
+{% block content %}
+    <!-- Main Content -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-2xl mx-auto">
+        <div class="text-center mb-8" data-aos="fade-up">
+            <i data-feather="user-plus" class="w-12 h-12 mx-auto text-indigo-400 mb-4"></i>
+            <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                <span class="gradient-text">Create Account</span>
+            </h1>
+            <p class="mt-2 text-gray-400">
+                Join our community and start sharing your thoughts
+            </p>
+        </div>
+
+        <div class="bg-dark rounded-xl p-8 border border-gray-800" data-aos="fade-up">
+            <form method="post" action="{% url 'register' %}" class="space-y-6">
                 {% csrf_token %}
-                <span class="login100-form-title p-b-49">
-						Register
-                </span>
-
-                <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
-                    <span class="label-input100">Username</span>
-                    <div class="input-wrapper">
-                        {{ form.username }}
-                        {% if form.username.errors %}
-                            <div class="error-message">
-                                {% for error in form.username.errors %}
-                                    <p class="text-danger">{{ error }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                        <span class="focus-input100"></span>
-                    </div>
-                </div>
-                <div class="wrap-input100 validate-input m-b-23" data-validate="Email is reauired">
-                    <span class="label-input100">Email</span>
-                    <div class="input-wrapper">
-                        {{ form.email }}
-                        {% if form.email.errors %}
-                            <div class="error-message">
-                                {% for error in form.email.errors %}
-                                    <p class="text-danger">{{ error }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                        <span class="focus-input100"></span>
-                    </div>
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-300 mb-1">Username</label>
+                    <input type="text" name="username" id="username" required
+                           class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <span class="label-input100">Password</span>
-                    <div class="input-wrapper">
-                        {{ form.password }}
-                        {% if form.password.errors %}
-                            <div class="error-message">
-                                {% for error in form.password.errors %}
-                                    <p class="text-danger">{{ error }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                        <span class="focus-input100"></span>
-                    </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
+                    <input type="email" name="email" id="email" required
+                           class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 </div>
 
-                <div class="container-login100-form-btn" style="padding-top: 80px">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
-                            Register
-                        </button>
-                    </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Password</label>
+                    <input type="password" name="password" id="password" required
+                           class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 </div>
-                <div class="flex-col-c p-t-155">
-                    <a href="{% url 'login' %}" class="txt2">
-                        Login
-                    </a>
+
+                <div>
+                    <label for="confirm_password" class="block text-sm font-medium text-gray-300 mb-1">Confirm
+                        Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" required
+                           class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                </div>
+
+                <div class="flex items-center">
+                    <input id="terms" name="terms" type="checkbox" required
+                           class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-700 rounded bg-gray-800">
+                    <label for="terms" class="ml-2 block text-sm text-gray-300">
+                        I agree to the <a href="#" class="text-indigo-400 hover:text-indigo-300">Terms and
+                        Conditions</a>
+                    </label>
+                </div>
+
+                <div>
+                    <button type="submit"
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                        Create Account
+                    </button>
                 </div>
             </form>
+
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-700"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-dark text-gray-400">Or sign up with</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 gap-3">
+                    <div>
+                        <a href="#"
+                           class="w-full inline-flex justify-center py-2 px-4 border border-gray-700 rounded-md shadow-sm bg-gray-800 text-sm font-medium text-gray-300 hover:bg-gray-700">
+                            <i data-feather="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#"
+                           class="w-full inline-flex justify-center py-2 px-4 border border-gray-700 rounded-md shadow-sm bg-gray-800 text-sm font-medium text-gray-300 hover:bg-gray-700">
+                            <i data-feather="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-400">
+                    Already have an account?
+                    <a href="{% url 'login' %}" class="font-medium text-indigo-400 hover:text-indigo-300">Sign in</a>
+                </p>
+            </div>
         </div>
-    </div>
-</div>
-
-
-<div id="dropDownSelect1"></div>
-
-<!--===============================================================================================-->
-<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
-<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
-<script src="{% static 'js/main.js' %}"></script>
-
-</body>
-</html>
+    </main>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Main Content -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                <span class="gradient-text">Contact Us</span>
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                Have questions or feedback? We'd love to hear from you.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div class="bg-dark rounded-xl p-8 border border-gray-800" data-aos="fade-right">
+                <h2 class="text-2xl font-bold mb-6">Send us a message</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="text-green-500 mb-4">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                <form method="post" class="space-y-6">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div>
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                        {{ form.name.errors }}
+                    </div>
+                    <div>
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                        {{ form.email.errors }}
+                    </div>
+                    <div>
+                        {{ form.subject.label_tag }}
+                        {{ form.subject }}
+                        {{ form.subject.errors }}
+                    </div>
+                    <div>
+                        {{ form.message.label_tag }}
+                        {{ form.message }}
+                        {{ form.message.errors }}
+                    </div>
+                    <div>
+                        <button type="submit"
+                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div data-aos="fade-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-dark rounded-xl p-6 border border-gray-800 contact-card transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-900/20 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <i data-feather="mail" class="w-5 h-5 text-indigo-400"></i>
+                            </div>
+                            <h3 class="text-lg font-bold">Email</h3>
+                        </div>
+                        <p class="text-gray-400 mb-2">General inquiries:</p>
+                        <a href="mailto:aminprim84@gmail.com" class="text-indigo-400 hover:text-indigo-300">info@darkblog.com</a>
+                    </div>
+                    <div class="bg-dark rounded-xl p-6 border border-gray-800 contact-card transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-900/20 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <i data-feather="phone" class="w-5 h-5 text-indigo-400"></i>
+                            </div>
+                            <h3 class="text-lg font-bold">Phone</h3>
+                        </div>
+                        <p class="text-gray-400 mt-4 mb-2">Business hours:</p>
+                        <p class="text-gray-400">Mon-Fri, 9am-5pm EST</p>
+                    </div>
+                </div>
+
+                <div class="bg-dark rounded-xl p-6 border border-gray-800 mb-8 contact-card transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-900/20 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                            <i data-feather="map-pin" class="w-5 h-5 text-indigo-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Location</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">123 Tech Street<br>San Francisco, CA 94107<br>United States</p>
+                </div>
+
+                <div class="bg-dark rounded-xl p-6 border border-gray-800 contact-card transition-all duration-300">
+                    <h3 class="text-lg font-bold mb-4">Follow Us</h3>
+                    <p class="text-gray-400 mb-4">Stay connected with us on social media for the latest updates and
+                        content.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/LEMOONAD" target="_blank"
+                           class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-indigo-600 hover:text-white transition duration-300">
+                            <i data-feather="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/amin-bagheri-447348229/" target="_blank"
+                           class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-indigo-600 hover:text-white transition duration-300">
+                            <i data-feather="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
