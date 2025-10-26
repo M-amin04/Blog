@@ -32,7 +32,7 @@ This project is licensed under the MIT License.
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/mohammadaminbagheri/blog.git
+git clone https://github.com/M-amin04/blog.git
 cd blog-project
 
 Create a virtual environment:
